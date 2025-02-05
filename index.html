@@ -1,4 +1,3 @@
-<!-- The most amazing things that kick me alot is learning and working  -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,14 +5,282 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aman Pandey - Portfolio</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script defer src="index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <style>
+        :root {
+            --background: 222.2 84% 4.9%;
+            --foreground: 210 40% 98%;
+            --card: 222.2 84% 4.9%;
+            --card-foreground: 210 40% 98%;
+            --popover: 222.2 84% 4.9%;
+            --popover-foreground: 210 40% 98%;
+            --primary: 217.2 91.2% 59.8%;
+            --primary-foreground: 222.2 47.4% 11.2%;
+            --secondary: 217.2 32.6% 17.5%;
+            --secondary-foreground: 210 40% 98%;
+            --muted: 217.2 32.6% 17.5%;
+            --muted-foreground: 215 20.2% 65.1%;
+            --accent: 217.2 32.6% 17.5%;
+            --accent-foreground: 210 40% 98%;
+            --destructive: 0 62.8% 30.6%;
+            --destructive-foreground: 210 40% 98%;
+            --border: 217.2 32.6% 17.5%;
+            --input: 217.2 32.6% 17.5%;
+            --ring: 224.3 76.3% 48%;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: hsl(var(--card));
+    border-bottom: 1px solid hsl(var(--border));
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(0, 120, 255, 0.8); /* Initial glow */
+    animation: flicker 1.5s infinite alternate; /* Flickering effect */
+}
+
+/* Fire Effect */
+nav::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 100%;
+    height: 20px;
+    background: radial-gradient(circle, rgba(0, 120, 255, 0.7), transparent);
+    filter: blur(10px);
+    opacity: 0.7;
+    transform: translateX(-50%);
+    animation: flame 1.5s infinite alternate ease-in-out;
+}
+
+/* Flickering Animation */
+@keyframes flicker {
+    0% {
+        box-shadow: 0 0 15px rgba(0, 120, 255, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 30px rgba(0, 120, 255, 1), 0 0 40px rgba(0, 120, 255, 0.9);
+    }
+}
+
+/* Wavy Flame Movement */
+@keyframes flame {
+    0% {
+        transform: translateX(-50%) scaleY(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateX(-50%) scaleY(1.2);
+        opacity: 1;
+    }
+}
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        body {
+    background: radial-gradient(circle, rgba(0, 50, 200, 0.5) 0%, rgba(0, 0, 50, 0.8) 60%, rgba(0, 0, 20, 1) 100%);
+    animation: breathe 6s infinite alternate ease-in-out, flicker 3s infinite alternate ease-in-out;
+}
+
+/* Breathing Effect */
+@keyframes breathe {
+    0% {
+        background-size: 100% 100%;
+        filter: brightness(0.8);
+    }
+    100% {
+        background-size: 110% 110%;
+        filter: brightness(1);
+    }
+}
+
+/* Flickering Effect */
+@keyframes flicker {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.9;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+        .nav-links a {
+            color: hsl(var(--foreground));
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+        }
+
+        .nav-links a:hover {
+            background-color: hsl(var(--accent));
+        }
+
+        .profile {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .profile-card {
+            background-color: hsl(var(--card));
+            border: 1px solid hsl(var(--border));
+            border-radius: 1rem;
+            padding: 1.5rem;
+            position: sticky;
+            top: 100px;
+        }
+
+        .profile-img {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 1rem;
+            margin-bottom: 1.5rem;
+            border: 2px solid hsl(var(--border));
+            transition: transform 0.2s;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.02);
+        }
+
+        .section {
+            background-color: hsl(var(--card));
+            border: 1px solid hsl(var(--border));
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s;
+        }
+
+        .section:hover {
+            transform: translateY(-2px);
+        }
+
+        .skill-tag {
+            background-color: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            transition: opacity 0.2s;
+        }
+
+        .skill-tag:hover {
+            opacity: 0.8;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 1.5rem;
+            background-color: hsl(var(--secondary));
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background-color: hsl(var(--secondary));
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: transform 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Anime Character with Modern Styling */
+        .naruto-character {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            z-index: 1000;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .naruto-character:hover {
+            transform: scale(1.1);
+        }
+
+        .speech-bubble {
+            position: absolute;
+            top: -60px;
+            right: 0;
+            background-color: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .naruto-character:hover .speech-bubble {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .profile {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-card {
+                position: static;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <nav class="container">
+        <nav>
             <div class="logo">
-                <a href="https://github.com/losercodes" target="_blank">
+                <a href="https://github.com/losercodes" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-github fa-2x"></i>
                 </a>
             </div>
@@ -25,18 +292,13 @@
             </div>
         </nav>
     </header>
-    
 
     <main class="container">
         <div class="profile">
             <aside class="profile-card">
-                <div>
-
-                    <img src="AMN.png" alt="Aman Pandey" class="profile-img">
-                    <!-- rest of your profile content -->
-                </div>
-                <h1 class="profile-name">Aman Pandey</h1>
-                <p class="profile-title">Software Developer | CTO</p>
+                <img src="/api/placeholder/300/300" alt="Aman Pandey" class="profile-img">
+                <h1>Aman Pandey</h1>
+                <p class="text-muted">Software Developer | CTO</p>
                 <p><i class="fas fa-map-marker-alt"></i> New Delhi, India</p>
                 <div class="skills-list" style="margin-top: 1rem;">
                     <span class="skill-tag">Rust</span>
@@ -46,12 +308,12 @@
             </aside>
 
             <div class="content">
-                <section id="about" class="section animate-in">
+                <section id="about" class="section">
                     <h2>About Me</h2>
                     <p>I am a passionate Full-Stack Developer with a focus on building user-centric web applications. With expertise in modern frontend technologies like TypeScript and React.js, alongside backend tools such as Python and Flask, I seamlessly bridge business needs with technical solutions.</p>
                 </section>
 
-                <section id="experience" class="section animate-in">
+                <section id="experience" class="section">
                     <h2>Experience</h2>
                     <div class="timeline">
                         <div class="timeline-item">
@@ -72,7 +334,7 @@
                     </div>
                 </section>
 
-                <section id="projects" class="section animate-in">
+                <section id="projects" class="section">
                     <h2>Projects</h2>
                     <div class="projects-grid">
                         <div class="project-card">
@@ -85,8 +347,8 @@
                             </div>
                         </div>
                         <div class="project-card">
-                            <h3>Soduku(90s-version)</h3>
-                            <p>Built a >Soduku using HTML5,CSS,SCSS,JS.</p>
+                            <h3>Sudoku (90s-version)</h3>
+                            <p>Built a Sudoku game using HTML5, CSS, SCSS, JS.</p>
                             <div class="skills-list" style="margin-top: 1rem;">
                                 <span class="skill-tag">HTML5</span>
                                 <span class="skill-tag">JavaScript</span>
@@ -96,7 +358,7 @@
                     </div>
                 </section>
 
-                <section id="skills" class="section animate-in">
+                <section id="skills" class="section">
                     <h2>Technical Skills</h2>
                     <div class="skills-list">
                         <span class="skill-tag">TypeScript</span>
@@ -116,37 +378,16 @@
         </div>
     </main>
 
-    <!-- Anime Character -->
     <div class="naruto-character">
-        <div class="chakra-aura"></div>
-        <div class="speech-bubble">Dattebayo! Let's explore together!</div>
-        <div class="shadow-clone">
-          <svg viewBox="0 0 120 120" width="120" height="120">
-            <path d="M60 20C40 20 25 40 25 65C25 90 40 100 60 100C80 100 95 90 95 65C95 40 80 20 60 20Z" 
-                  fill="#FF8C00" opacity="0.5"/>
-          </svg>
-        </div>
-        <svg viewBox="0 0 120 120" width="120" height="120">
-          <path d="M40 30C40 30 50 10 60 10C70 10 80 30 80 30" 
-                fill="#FFD700" stroke="#000" stroke-width="2"/>
-          <path d="M30 40C30 40 50 20 60 20C70 20 90 40 90 40" 
-                fill="#FFD700" stroke="#000" stroke-width="2"/>
-          <circle cx="60" cy="45" r="25" fill="#FFE4B5"/>
-          <rect x="35" y="30" width="50" height="10" fill="#000080"/>
-          <circle cx="60" cy="35" r="5" fill="#C0C0C0"/>
-          <path d="M57 35L63 35" stroke="#000" stroke-width="2"/>
-          <path d="M45 45L35 43M45 50L35 50M45 55L35 57" stroke="#000" stroke-width="2"/>
-          <path d="M75 45L85 43M75 50L85 50M75 55L85 57" stroke="#000" stroke-width="2"/>
-          <circle cx="50" cy="45" r="4" fill="#4169E1"/>
-          <circle cx="70" cy="45" r="4" fill="#4169E1"/>
-          <path d="M55 55Q60 60 65 55" fill="none" stroke="#000" stroke-width="2"/>
-          <path d="M35 70C35 70 60 80 85 70L80 100L40 100Z" fill="#FF8C00"/>
-          <path d="M45 100L75 100L60 120L45 100" fill="#FF8C00"/>
+        <div class="speech-bubble">Hey! Let's build something awesome!</div>
+        <svg viewBox="0 0 120 120" width="80" height="80">
+            <circle cx="60" cy="45" r="25" fill="#FFE4B5"/>
+            <path d="M40 30C40 30 50 10 60 10C70 10 80 30 80 30" fill="#FFD700"/>
+            <circle cx="50" cy="45" r="4" fill="#4169E1"/>
+            <circle cx="70" cy="45" r="4" fill="#4169E1"/>
+            <path d="M55 55Q60 60 65 55" fill="none" stroke="#000" stroke-width="2"/>
+            <path d="M35 70C35 70 60 80 85 70L80 100L40 100Z" fill="#FF8C00"/>
         </svg>
-      </div>
+    </div>
 </body>
 </html>
-
-
-
-<!-- AMN -->
