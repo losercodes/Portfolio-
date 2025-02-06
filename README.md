@@ -2,7 +2,7 @@
 
 An interactive personal portfolio website featuring a unique Naruto-themed UI element and particle animation effects. The website showcases my professional experience, projects, and technical skills with a GitHub-inspired dark theme.
 
-![Portfolio Preview](https://losercodes.github.io/Portfolio-/)
+![Portfolio Preview](https://losercodes.github.io/Portfolio-)
 
 ## Features
 
